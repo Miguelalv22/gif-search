@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@giphy/js-components": "^5.13.0",
+    "@giphy/js-fetch-api": "^5.6.0",
+    "axios": "^1.8.4"
+  },
+  "name": "gif-search",
+  "version": "1.0.0",
+  "description": "Un buscador para encontrar GIF desde la API de GIPHY",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miguelalv22/gif-search.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Miguelalv22/gif-search/issues"
+  },
+  "homepage": "https://github.com/Miguelalv22/gif-search#readme"
+}
