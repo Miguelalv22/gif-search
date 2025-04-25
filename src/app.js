@@ -1,16 +1,19 @@
+let apiUrl = 'api_general'
 const contentSection = document.getElementById('content');
-const apiUrl = 'api';
+const input = document.getElementById('gif-search');
 
 const getGif = async () => {
     const res = await axios.get(apiUrl);
-    console.log(res.data.data[3].images.original.url)
-    console.log(typeof res.data)
     makeGif(res.data.data)
 }
 
 const makeGif = (gifs) => {
+    while (contentSection.firstChild) {
+        contentSection.removeChild(contentSection.firstChild);
+    }
     for (let gif of gifs) {
         const img = document.createElement('img')
+        img
         const div = document.createElement('div')
         img.src = gif.images.original.url
         div.append(img)
@@ -18,12 +21,15 @@ const makeGif = (gifs) => {
     }
 }
 
-getGif()
+input.addEventListener('input', (e) => {
+    if (input.value.length > 2) {
+        apiUrl = 'api_search'
+        getGif();
 
+    } else if (input.value.length == 0) {
+        apiUrl = 'api_general'
+        getGif();
+    }
+})
 
-
-// const domTitle = document.createElement('h2')
-
-// domTitle.innerText = 'Titulo de DOM'
-// contentSection.append(domTitle)
-
+getGif();

@@ -5,6 +5,6 @@ body {
     flex-direction: column;
 }
 
-.gifArea div {
-    width: 30%;
+.gif-area div {
+    display: flex;
 }

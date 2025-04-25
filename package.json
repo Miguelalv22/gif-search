@@ -2,7 +2,8 @@
   "dependencies": {
     "@giphy/js-components": "^5.13.0",
     "@giphy/js-fetch-api": "^5.6.0",
-    "axios": "^1.8.4"
+    "axios": "^1.8.4",
+    "dotenv": "^16.5.0"
   },
   "name": "gif-search",
   "version": "1.0.0",
