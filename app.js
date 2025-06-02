@@ -1,51 +1,40 @@
-let apiUrl = 'api'
+import 'dotenv/config'
+let apiUrl = process.env.API_KEY
 const input = document.getElementById('gif-search');
-let counter = 0;
 
 const getGif = async () => {
-    const res = await axios.get(apiUrl);
-    makeGif(res.data.data);
+    try {
+        const res = await axios.get(apiUrl);
+        makeGif(res.data.data);
+    } catch (e) {
+        console.log("ERROR", e);
+    }
 }
 
 const makeGif = (gifs) => {
-    const divColumn1 = document.getElementById('column-one');
-    const divColumn2 = document.getElementById('column-two');
-    const divColumn3 = document.getElementById('column-three');
+    const gifArea = document.getElementById('gif-area');
 
-    counter = 0;
-    while (divColumn1.firstChild) {
-        divColumn1.removeChild(divColumn1.firstChild);
-        divColumn2.removeChild(divColumn2.firstChild);
-        divColumn3.removeChild(divColumn3.firstChild);
+    while (gifArea.firstChild) {
+        gifArea.removeChild(gifArea.firstChild);
     }
+
     for (let gif of gifs) {
-        counter += 1;
         const img = document.createElement('img')
         const divImage = document.createElement('div')
         img.src = gif.images.original.url
-        img.classList.add("gif-styles")
-
-        if (counter <= 6) {
-            divImage.append(img)
-            divColumn1.append(divImage)
-        } else if (counter <= 12) {
-            divImage.append(img)
-            divColumn2.append(divImage)
-        } else if (counter <= 18) {
-            divImage.append(img)
-            divImage.classList.add("col-md-6", "col-lg-12")
-            divColumn3.append(divImage)
-        }
+        img.classList.add("gif-styles", "grid-item")
+        divImage.append(img)
+        gifArea.append(divImage)
     }
 }
 
 input.addEventListener('input', (e) => {
     if (input.value.length > 2) {
-        apiUrl = 'api_search'
+        apiUrl = process.env.API_SEARCH
         getGif();
 
     } else if (input.value.length == 0) {
-        apiUrl = 'api'
+        apiUrl = process.env.API_KEY
         getGif();
     }
 })

@@ -3,10 +3,6 @@ body {
     max-width: 100%;
 }
 
-#column-three div{
-padding: 0;
-}
-
 .gif-styles {
     height: auto;
     width: 100%;
@@ -14,8 +10,24 @@ padding: 0;
     object-fit: fill;
 }
 
+@media(min-width: 576px) {
+    #gif-area {
+        columns: 1;
+    }
+}
+
+@media(min-width: 768px) {
+    #gif-area {
+        columns: 2;
+    }
+}
+
 @media(min-width: 992px) {
     body {
         padding: 0 10vw;
+    }
+
+    #gif-area {
+        columns: 3;
     }
 }
