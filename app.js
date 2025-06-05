@@ -1,5 +1,4 @@
-import 'dotenv/config'
-let apiUrl = process.env.API_KEY
+let apiUrl = API_KEY
 const input = document.getElementById('gif-search');
 
 const getGif = async () => {
@@ -30,11 +29,11 @@ const makeGif = (gifs) => {
 
 input.addEventListener('input', (e) => {
     if (input.value.length > 2) {
-        apiUrl = process.env.API_SEARCH
+        apiUrl = API_SEARCH + `${input.value}&limit=18&offset=0&rating=g&lang=en&bundle=messaging_non_clips`
         getGif();
 
     } else if (input.value.length == 0) {
-        apiUrl = process.env.API_KEY
+        apiUrl = API_KEY
         getGif();
     }
 })
